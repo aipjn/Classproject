@@ -14,7 +14,7 @@ from nltk.corpus import wordnet as wn
 from collections import Counter
 import pyphen
 
-class Baseline(object):
+class SVM(object):
 
     def __init__(self, language):
         self.language = language
@@ -52,8 +52,8 @@ class Baseline(object):
                 bigrams.extend(nltk.bigrams(sent, pad_left=True, pad_right=True))
             self.bigram_counts = Counter(bigrams)
         # self.clf = svm.SVC()
-        self.model = LogisticRegression()
-        # self.model = svm.SVC(gamma=5)
+        # self.model = LogisticRegression()
+        self.model = svm.SVC(gamma=5)
 
 
     def extract_features(self, word, preword, afterword):
